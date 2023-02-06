@@ -1,3 +1,15 @@
+/*
+* Code is not stabile, still under construction!!!
+*
+* Should be implemented: 
+* - Main logic!
+* - Aogin logic
+* - Artist booking logic
+* - Event and artist classes synchronized
+*
+* upd. 6.2.2023 J.
+*/
+
 
 import java.util.ArrayList;
 
