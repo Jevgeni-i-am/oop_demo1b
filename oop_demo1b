@@ -1,0 +1,110 @@
+
+import java.util.ArrayList;
+
+public class oop_demo2a {
+
+}
+
+class Artist {
+      private String artistName;
+      private String performanceGenre;
+      private int performanceFee;
+      private ArrayList<String> gigCelendar = new ArrayList<>();
+      private Event event;
+
+      public Artist(
+                  String artistName,
+                  String performanceGenre,
+                  int performanceFee) {
+            this.artistName = artistName;
+            this.performanceGenre = performanceGenre;
+            this.performanceFee = performanceFee;
+      }
+
+      public String getArtistName() {
+            return this.artistName;
+      }
+
+      public String getPerformanceGenre() {
+            return this.performanceGenre;
+      }
+
+      public int getPerformanceFee() {
+            return this.performanceFee;
+      }
+
+      public ArrayList getGigDate() {
+            for (int i = 0; i < gigCelendar.size(); i++) {
+                  System.out.println("Keikka buukattu: " + gigCelendar.get(i));
+            }
+            return this.gigCelendar;
+      }
+
+      public void setGigDate(Event event) {
+            this.event = event;
+            if (getGigDate() == event.getEventDate()) {
+
+            }
+
+            gigCelendar.add(event.getEventDate());
+      }
+
+}
+
+class Customer {
+      private String customerName;
+      private boolean isLogged;
+
+      public Customer(String customerName, boolean isLogged) {
+            this.customerName = customerName;
+            this.isLogged = isLogged;
+      }
+
+      public String getCustomerName() {
+            return this.customerName;
+      }
+
+      public boolean isLogged() {
+            return this.isLogged;
+      }
+
+}
+
+class Event {
+      private String eventName;
+      private String eventType;
+      private String eventDate;
+      private Artist bookedArtist;
+
+      public Event(
+                  String eventName,
+                  String eventType,
+                  String eventDate,
+                  Artist artist) {
+            this.eventName = eventName;
+            this.eventType = eventType;
+            this.eventDate = eventDate;
+            this.bookedArtist = artist;
+      }
+
+      public String getEventDate() {
+            return this.eventDate;
+      }
+
+      public String getEventName() {
+            return this.eventName;
+      }
+
+      public String getEventType() {
+            return this.eventType;
+      }
+
+      public ArrayList getBookedArtist(Artist artist) {
+            this.bookedArtist = artist;
+            for (int i = 0; i < artist.bookedArtist.size(); i++) {
+
+            }
+            return this.bookedArtist;
+      }
+
+}
