@@ -2,39 +2,151 @@
 * Code is not stabile, still under construction!!!
 *
 * Should be implemented: 
+* 
 * - Main logic!
-* - Aogin logic
+* - Login logic
 * - Artist booking logic
 * - Event and artist classes synchronized
 *
-* upd. 6.2.2023 J.
+* upd. 9.2.2023 J.
 */
 
 
-import java.util.ArrayList;
 
-public class oop_demo2a {
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Programm {
+
+      public static void main(String[] args) {
+
+            String[] artistienNimet = { "Kalle", "Veikko", "Adam", "Hullu Poro","Dj Megastar", "Kitaristi Virtanen", "Viinimarja" };
+
+            String[] genret = { "Dj", "Taikkuri", "Stand Up", "Tanssijä","Moniosaaja", "Koomikko", "Tankotanssijä" };
+
+            int[] palkkiot = { 100, 200, 300, 150, 550, 787 };
+
+            String[] tilaisuudet = { "10.12.2022", "Syntymäpäivä", "Konsertti", "Yökerho", "Messut", "Toritanssit","Pihakirppis" };
+
+            Scanner scan = new Scanner(System.in);
+            int x = 0;
+            String s = "";
+
+            {
+
+                  while (!"4".equals(s)) {
+
+                        System.out.println("Valitse haluamasi vaihtoehto:");
+                        System.out.println("1. Tulosta esiintyjät");
+                        System.out.println("2. Tulosta tilaisuudet");
+                        System.out.println("3. xxx");
+                        System.out.println("4. Lopeta");
+                        System.out.println("Valintasi: ");
+                        s= scan.next();
+
+                        try {
+                              x = Integer.parseInt(s);
+                        } catch (NumberFormatException e) {
+                              System.out.println("Väärä valinta. \nSijoita oikea numero");
+                        }
+
+                        switch (x) {
+                              case 1:
+                                    System.out.println(Artist.getArtistName());
+                                    break;
+                              case 2:
+
+                                    break;
+                              case 3:
+
+                                    break;
+
+                              default:
+
+                                    break;
+
+                        }
+                  }
+            }
+            scan.close();
+      }
+
+}
+
+class UserIsLogged {
+      private boolean isLogged;
+
+      public UserIsLogged(boolean isLogged) {
+            this.isLogged = false;
+      }
+
+      public boolean isLogged() {
+            return this.isLogged;
+      }
+}
+
+class Menu {
+
+}
+
+class Event {
+      private String eventName;
+      private String eventType;
+      private String eventDate;
+      private ArrayList<String> artist;
+
+      public Event(
+                  String eventName,
+                  String eventType,
+                  String eventDate,
+                  Artist artist) {
+            this.eventName = eventName;
+            this.eventType = eventType;
+            this.eventDate = eventDate;
+      }
+
+      public String getEventDate() {
+            return this.eventDate;
+      }
+
+      public String getEventName() {
+            return this.eventName;
+      }
+
+      public String getEventType() {
+            return this.eventType;
+      }
+
+      public ArrayList<String> getBookedArtist(Artist artist) {
+            for (int i = 0; i < artist.size(); i++) {
+
+            }
+            return this.artist;
+      }
 
 }
 
 class Artist {
-      private String artistName;
+      private static String artistName;
       private String performanceGenre;
       private int performanceFee;
-      private ArrayList<String> gigCelendar = new ArrayList<>();
-      private Event event;
+      private final ArrayList<String> gigCelendar = new ArrayList<>();
 
       public Artist(
                   String artistName,
                   String performanceGenre,
                   int performanceFee) {
-            this.artistName = artistName;
+
             this.performanceGenre = performanceGenre;
             this.performanceFee = performanceFee;
       }
 
-      public String getArtistName() {
-            return this.artistName;
+      public int size() {
+            return 0;
+      }
+
+      public static String getArtistName() {
+            return artistName;
       }
 
       public String getPerformanceGenre() {
@@ -45,19 +157,14 @@ class Artist {
             return this.performanceFee;
       }
 
-      public ArrayList getGigDate() {
-            for (int i = 0; i < gigCelendar.size(); i++) {
-                  System.out.println("Keikka buukattu: " + gigCelendar.get(i));
+      public ArrayList<String> getGigDate() {
+            for (String s : gigCelendar) {
+                  System.out.println("Keikka buukattu: " + s);
             }
             return this.gigCelendar;
       }
 
       public void setGigDate(Event event) {
-            this.event = event;
-            if (getGigDate() == event.getEventDate()) {
-
-            }
-
             gigCelendar.add(event.getEventDate());
       }
 
@@ -78,45 +185,6 @@ class Customer {
 
       public boolean isLogged() {
             return this.isLogged;
-      }
-
-}
-
-class Event {
-      private String eventName;
-      private String eventType;
-      private String eventDate;
-      private Artist bookedArtist;
-
-      public Event(
-                  String eventName,
-                  String eventType,
-                  String eventDate,
-                  Artist artist) {
-            this.eventName = eventName;
-            this.eventType = eventType;
-            this.eventDate = eventDate;
-            this.bookedArtist = artist;
-      }
-
-      public String getEventDate() {
-            return this.eventDate;
-      }
-
-      public String getEventName() {
-            return this.eventName;
-      }
-
-      public String getEventType() {
-            return this.eventType;
-      }
-
-      public ArrayList getBookedArtist(Artist artist) {
-            this.bookedArtist = artist;
-            for (int i = 0; i < artist.bookedArtist.size(); i++) {
-
-            }
-            return this.bookedArtist;
       }
 
 }
